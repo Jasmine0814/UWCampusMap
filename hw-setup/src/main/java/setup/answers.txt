@@ -4,31 +4,55 @@
 1. Why did Fibonacci fail the testThrowsIllegalArgumentException< test? What (if anything) did
 you have to do to fix it? If you did not have to change anything to fix this issue, explain why.
 
-
+throw IllegalArgumentException if n is not a nonnegative number. zero is a nonnegative number.
+Change condition in if statement (n <= 0) to (n < 0) to fix this bug.
 
 2. Why did Fibonacci fail the testBaseCase test? What (if anything) did you have to do to fix
 it? If you did not have to change anything to fix this issue, explain why.
 
-
+The best case is when n is equal to 0 and 1, it will return 1. However, in the first if statement
+When n is equal to 0 is will throw IllegalArgumentException which does not match. Same as question
+one, Change condition in the if statement (n <= 0) to (n < 0) to fix both of these bugs.
 
 3.Why did Fibonacci fail the testInductiveCase test? What (if anything) did you have to do to
 fix it? If you did not have to change anything to fix this issue, explain why.
 
-
+The expected result of this test is 2 but the actual is 1. When n = 2, the result should be
+(n - 1) + (n - 2) which means the sum of the previous two term. But based on the code, it is
+always 1 because it goes to the else if statement.
+Change the condition in else if statement from (n <= 2) to (n < 2) to fix this bug.
 
 ## Part 8: Debugger Tutorial
 
 1. What are the values of "x", "y", and "sum" printed by your statement? Why was x not equal 
 to the first integer entered here, and how could we fix this?
 
-
+x = 4, y = 4, sum = 0. x is not equal to the first integer entered here. In line29 x is 5, an odd
+number and divide by two, the answer is 2 instead of 2.5 because it's integer.
 
 2. What are all the names and values listed in the “Variables” panel? What does the “frames” 
 tab list as the current method and line number? (Write down the text that was highlighted when 
 the Debug perspective first opened.)
 
-
+variables:
+sum = Cannot find local variable 'sum'
+x=3
+y=4
+frames tab list:
+computeSum43, Adder
+main:32, Adder
 
 3. What are all the names and values listed in the “Variables” panel after each of the two step overs?
 
+first step over:
+args = []
+console = java.util.Scanner[delimiters=\p{javaWhitespace}+][position=3][match valid=true][need input=false][source closed=false][skipped=false][group separator=\x{2c}][decimal separator=\x{2e}][positive prefix=][negative prefix=\Q-\E][positive suffix=][negative suffix=][NaN string=\QNaN\E][infinity string=\Q∞\E]
+x = 3
+y = 4
 
+second step over:
+args = []
+console = java.util.Scanner[delimiters=\p{javaWhitespace}+][position=3][match valid=true][need input=false][source closed=false][skipped=false][group separator=\x{2c}][decimal separator=\x{2e}][positive prefix=][negative prefix=\Q-\E][positive suffix=][negative suffix=][NaN string=\QNaN\E][infinity string=\Q∞\E]
+x = 3
+y = 4
+sum = -1
