@@ -51,7 +51,7 @@ public class Evaluator {
   public static float evalPoly2(float[] A, int v) {
     float val = 0;  // NOTE: do not change this line
 
-    int j = -1;  //
+    int j = -1;
 
     // Note that the invariant does not include "i" anymore, so that may
     // not be needed in this version.
