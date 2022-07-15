@@ -66,26 +66,48 @@ public class FiniteSetTest {
 
   // TODO: Feel free to initialize (private static) FiniteSet objects here
   //       if you plan to use them for the tests below.
+  private static FiniteSet SNull = FiniteSet.of(new float[] {});
+  private static FiniteSet SNull1 = FiniteSet.of(new float[] {});
+  private static FiniteSet S2 = FiniteSet.of(new float[] {2});
+  private static FiniteSet S3 = FiniteSet.of(new float[] {3});
+  private static FiniteSet S23 = FiniteSet.of(new float[] {2, 3});
+  private static FiniteSet S34 = FiniteSet.of(new float[]{3, 4});
+
+  private static FiniteSet S123 = FiniteSet.of(new float[] {1, 2, 3});
+  private static FiniteSet S1234 = FiniteSet.of(new float[] {1, 2, 3, 4});
 
   /** Tests forming the union of two finite sets. */
   @Test
   public void testUnion() {
-    // TODO: implement this
-
+    assertEquals(SNull.union(SNull1), SNull);
+    assertEquals(SNull.union(S3), S3);
+    assertEquals(S3.union(SNull), S3);
+    assertEquals(S12.union(S23), S123);
+    assertEquals(S12.union(S34), S1234);
+    assertEquals(S123.union(S1234), S1234);
   }
 
   /** Tests forming the intersection of two finite sets. */
   @Test
   public void testIntersection() {
-    // TODO: implement this
+    assertEquals(SNull.intersection(SNull1), SNull1);
+    assertEquals(SNull.intersection(S3), SNull);
+    assertEquals(S3.intersection(SNull), SNull);
+    assertEquals(S12.intersection(S23), S2);
+    assertEquals(S23.intersection(S34), S3);
+    assertEquals(S123.intersection(S1234), S123);
 
   }
 
   /** Tests forming the difference of two finite sets. */
   @Test
   public void testDifference() {
-    // TODO: implement this
-
+    assertEquals(SNull.difference(SNull1), SNull1);
+    assertEquals(SNull.difference(S3), SNull);
+    assertEquals(S3.difference(SNull), S3);
+    assertEquals(S12.difference(S34), S12);
+    assertEquals(S12.difference(S23), S1);
+    assertEquals(S12.difference(S123), SNull1);
   }
 
 }
