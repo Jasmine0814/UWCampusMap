@@ -64,8 +64,6 @@ public class FiniteSetTest {
     assertEquals(S12.size(), 2);
   }
 
-  // TODO: Feel free to initialize (private static) FiniteSet objects here
-  //       if you plan to use them for the tests below.
   private static FiniteSet SNull = FiniteSet.of(new float[] {});
   private static FiniteSet SNull1 = FiniteSet.of(new float[] {});
   private static FiniteSet S2 = FiniteSet.of(new float[] {2});

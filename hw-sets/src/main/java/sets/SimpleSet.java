@@ -22,10 +22,8 @@ import java.util.List;
  */
 public class SimpleSet {
 
-  // TODO: Include a representation invariant (RI) for the fields below
   // RI: points != null
-  // TODO: Include a abstraction function (AF) for this ADT
-  // The abstraction function is when this.complement is true, it is an immutable
+  // AF: The abstraction function is when this.complement is true, it is an immutable
   // set of points. otherwise, it is the complement of immutable set of points.
   private final boolean complement;
   private final FiniteSet points;
@@ -112,8 +110,6 @@ public class SimpleSet {
    * @return R \ this
    */
   public SimpleSet complement() {
-    // TODO: implement this method
-    //       include sufficient comments to see why it is correct (hint: cases)
     // When the set is not the complement of the finite set, the variable complement(boolean)
     // will be true. And then the parameter of constructor would also be true. Return the new
     // SimpleSet with the complement(true) and points. Otherwise it has false for complement.
@@ -131,8 +127,6 @@ public class SimpleSet {
    * @return this union other
    */
   public SimpleSet union(SimpleSet other) {
-    // TODO: implement this method
-    //       include sufficient comments to see why it is correct (hint: cases)
     // union two complements of finite set which is the complement of intersection of
     // these two set. For example, the union of R\ {1,2,3} and R\ {2,3,4} should be
     // R\{2, 3} so it is complement and call the intersection method.
@@ -168,9 +162,6 @@ public class SimpleSet {
    * @return this intersect other
    */
   public SimpleSet intersection(SimpleSet other) {
-    // TODO: implement this method
-    //       include sufficient comments to see why it is correct
-
     // intersection of two complement of finite sets which is the union of this.point
     // and other.point. For Example R\{1,2,3} and R\{2,3,4}. the intersection of these
     // two variable should be R\{1,2,3,4} where {1,2,3,4} is the union of two variable
@@ -208,9 +199,6 @@ public class SimpleSet {
    * @return this minus other
    */
   public SimpleSet difference(SimpleSet other) {
-    // TODO: implement this method
-    //       include sufficient comments to see why it is correct
-
     // the difference between two complement of finite sets which is the difference
     // between other and this. For example, R\{1,2,3} and R\{2,3,4} the difference betwenn
     // these two should be {4} (because this have it but other do not have) where it is
