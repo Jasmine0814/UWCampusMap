@@ -1,0 +1,13 @@
+# test many nodes in two graphs can be listed correctly.
+
+CreateGraph A
+CreateGraph B
+AddNode A n1
+AddNode A n2
+AddNode A n3
+AddNode B n4
+AddNode B n5
+AddNode B n6
+ListNode A
+ListNode B
+

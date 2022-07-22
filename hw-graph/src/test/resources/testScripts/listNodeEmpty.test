@@ -1,0 +1,7 @@
+# test the node in empty graph can be listed correctly.
+
+# Create a graph
+CreateGraph graph1
+
+# Print the nodes in the graph
+ListNode graph1

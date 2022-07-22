@@ -1,0 +1,7 @@
+# test if the children of a self-pointing can be listed.
+
+created graph A
+added node n1 to A
+added edge e1 from n1 to n1 in A
+
+the children of n1 in A are: n1(e1)

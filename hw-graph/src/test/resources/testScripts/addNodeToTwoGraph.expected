@@ -1,0 +1,22 @@
+# test that create two graphs and add 3 nodes in graph1, 2 nodes in graph2, 1 node in graph3.
+
+# Create a graph
+created graph graph1
+created graph graph2
+created graph graph3
+
+# Add a pair of nodes
+added node n1 to graph1
+added node n2 to graph1
+added node n3 to graph1
+added node n4 to graph2
+added node n5 to graph2
+added node n6 to graph3
+
+# Print the nodes in the graphs
+graph1 contains: n1 n2 n3
+graph2 contains: n4 n5
+graph3 contains: n6
+
+
+

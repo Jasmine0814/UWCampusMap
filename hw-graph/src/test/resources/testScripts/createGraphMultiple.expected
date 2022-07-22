@@ -1,0 +1,12 @@
+# test that if it allows to create 3 empty graphs
+
+# Create a graph
+created graph graph1
+created graph graph2
+created graph graph3
+
+# Print the nodes in the graph
+graph1 contains:
+graph2 contains:
+graph3 contains:
+

@@ -1,0 +1,10 @@
+# test one node in a graph can be listed correctly.
+
+# Create a graph
+CreateGraph graph1
+
+# Add a node
+AddNode graph1 n1
+
+# Print the nodes in the graph
+ListNode graph1

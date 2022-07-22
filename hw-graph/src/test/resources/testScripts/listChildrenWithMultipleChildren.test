@@ -1,0 +1,10 @@
+# test if a node with many children can be listed.
+
+CreateGraph A
+AddNode A n1
+AddNode A n2
+AddNode A n3
+AddEdge A n1 n2 e12
+AddEdge A n1 n3 e13
+AddEdge A n3 n1 e31
+ListChildren A n1

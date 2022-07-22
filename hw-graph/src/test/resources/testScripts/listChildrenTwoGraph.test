@@ -1,0 +1,16 @@
+# test the children of many nodes separate in two graphs can be listed.
+
+CreateGraph A
+CreateGraph B
+AddNode A n1
+AddNode A n2
+AddNode A n3
+AddNode B n4
+AddNode B n5
+AddNode B n6
+AddEdge A n1 n2 e12
+AddEdge A n1 n3 e13
+AddEdge B n4 n5 e45
+AddEdge B n4 n6 e16
+ListChildren A n1
+ListChildren B n4

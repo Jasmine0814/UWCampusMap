@@ -1,0 +1,16 @@
+# test a node can be added to a not empty graph
+
+# Create a graph
+created graph graph1
+
+# Add a node
+added node n1 to graph1
+
+# Print the nodes in the graph
+graph1 contains: n1
+
+# Add a node
+added node n2 to graph1
+
+# Print the nodes in the graph
+graph1 contains: n1 n2

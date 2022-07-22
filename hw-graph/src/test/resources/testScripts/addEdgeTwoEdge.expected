@@ -1,0 +1,17 @@
+# test that create a graph and add two nodes, two edges can be added between two node in a graph
+
+# Create a Graph
+created graph graph1
+
+# Add a pair of nodes
+added node n1 to graph1
+added node n2 to graph1
+
+# Add two edges between the two nodes
+added edge e1 from n1 to n2 in graph1
+added edge e2 from n2 to n1 in graph1
+
+# Print the nodes and their child
+graph1 contains: n1 n2
+the children of n1 in graph1 are: n2(e1)
+the children of n2 in graph1 are: n1(e2)

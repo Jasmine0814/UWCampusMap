@@ -8,9 +8,22 @@ interface to a graph. If your design includes multiple classes or interfaces, ex
 included each one; if not, explain whether you considered additional classes and why you decided
 not to include them.
 
+Because the spec said the graph represent nodes with data(String) and edges with label(String) between
+two nodes, there are three elements, I create a DirectedLabeledGraph class, a Node class and an Edge
+class.
 
-TODO: Your answer here!
+The Node class is an immutable class which has String data. In the Node class, it has a getData method
+to return the data of the given node. And the Edge class is an immutable class as well which contains a
+parent node, a child node and a string label. In ths Edge class, it has some getter method : getChild()
+getParent() and getLabel().
 
+The Directed LabeledGraph class is a public mutable class which allow client to plan or control routine.
+it has addEdge() and addNode() two add method which allows people to control it. listNode is to return a
+set of node that allows people to check whether it exists. getChildren() method is to return all the edges
+from the given parent node to its children that allows people to find connection they want.
+
+At the beginning I was thinking about to use krustal or Dijiska that I learned from cse373 because it is a graph
+but in hw5 spec, it said you should not add a sorting algorithm.
 
 ## Part 3
 ###########################################################################
@@ -18,5 +31,16 @@ TODO: Your answer here!
 What was your testing strategy for this assignment? How do your script tests and JUnit tests
 differ from each other (if they do), and why?
 
+Firstly, I categorize these methods into two parts. In the DirectedLabeledGraph class, I use
+scriptTest to test all the method. Starting at doing test with empty element for example create
+an empty graph and listNode, and then move to some simple tests(add single node and add one edge).
+According to the Graph Definitions and Terminology from part1, we know that self-pointing is available
+so we need to consider this situation as a kind of test. finally, I think about to have edge testing
+(e.g. two graphs)
+I'd like to use junitTest to test the constructor and methods in Node and Edge class. Firstly I
+create many node and edge variables Because the test afterwards will need to use the same conditions
+and this action will make it convience. then I have test method to make sure that the constructor is
+correct. Finally, writing test to comparing the expected value and actual value to make sure each
+getter method is correct.
 
-TODO: Your answer here!
+
