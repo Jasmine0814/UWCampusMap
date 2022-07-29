@@ -18,4 +18,4 @@ added edge e1 from n2 to n1 in graph1
 
 # Print the nodes in the graph and the edges from n1
 graph1 contains: n1 n2
-the children of n1 in graph1 are: n2(e1) n2(e2) n3(e3)
+the children of n1 in graph1 are: n2(e1) n2(e2) n2(e3)

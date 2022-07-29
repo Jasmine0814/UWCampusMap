@@ -1,7 +1,7 @@
 # Tests add a node to a empty graph.
 
 # Create a graph
-created graph graph1
+CreateGraph graph1
 
 # Add a node
 AddNode graph1 n1

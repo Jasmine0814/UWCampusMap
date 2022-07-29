@@ -11,10 +11,9 @@
 
 package graph.scriptTestRunner;
 
+import graph.DirectedLabeledGraph;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * This class implements a testing driver which reads test scripts
@@ -29,8 +28,7 @@ public class GraphTestDriver {
     /**
      * String -> Graph: maps the names of graphs to the actual graph
      **/
-    // TODO for the student: Uncomment and parameterize the next line correctly:
-    //private final Map<String, _______> graphs = new HashMap<String, ________>();
+    private final Map<String, DirectedLabeledGraph> graphs = new HashMap<String,DirectedLabeledGraph>();
     private final PrintWriter output;
     private final BufferedReader input;
 
@@ -115,10 +113,8 @@ public class GraphTestDriver {
     }
 
     private void createGraph(String graphName) {
-        // TODO Insert your code here.
-
-        // graphs.put(graphName, ___);
-        // output.println(...);
+        graphs.put(graphName, new DirectedLabeledGraph());
+        output.println("created graph " + graphName);
     }
 
     private void addNode(List<String> arguments) {
@@ -133,7 +129,10 @@ public class GraphTestDriver {
     }
 
     private void addNode(String graphName, String nodeName) {
-        // TODO Insert your code here.
+        DirectedLabeledGraph dlg = graphs.get(graphName);
+        DirectedLabeledGraph.Node newNode = new DirectedLabeledGraph.Node(nodeName);
+        dlg.addNode(newNode);
+        output.println("added node " + nodeName + " to " + graphName);
 
         // ___ = graphs.get(graphName);
         // output.println(...);
@@ -154,10 +153,12 @@ public class GraphTestDriver {
 
     private void addEdge(String graphName, String parentName, String childName,
                          String edgeLabel) {
-        // TODO Insert your code here.
-
-        // ___ = graphs.get(graphName);
-        // output.println(...);
+        DirectedLabeledGraph dlg = graphs.get(graphName);
+        DirectedLabeledGraph.Edge newEdge = new DirectedLabeledGraph.Edge(
+                new DirectedLabeledGraph.Node(parentName),new DirectedLabeledGraph.Node(childName),edgeLabel);
+        dlg.addEdge(newEdge);
+        output.println("added edge " + edgeLabel + " from " + parentName + " to "
+                + childName + " in " + graphName);
     }
 
     private void listNodes(List<String> arguments) {
@@ -170,10 +171,13 @@ public class GraphTestDriver {
     }
 
     private void listNodes(String graphName) {
-        // TODO Insert your code here.
-
-        // ___ = graphs.get(graphName);
-        // output.println(...);
+        DirectedLabeledGraph dlg = graphs.get(graphName);
+        output.print(graphName + " contains:");
+        List<DirectedLabeledGraph.Node> allNodes =  new ArrayList<>(dlg.listNodes());
+        for(DirectedLabeledGraph.Node n : allNodes) {
+            output.print(" " + n.getData());
+        }
+        output.println();
     }
 
     private void listChildren(List<String> arguments) {
@@ -187,10 +191,25 @@ public class GraphTestDriver {
     }
 
     private void listChildren(String graphName, String parentName) {
-        // TODO Insert your code here.
+        DirectedLabeledGraph dlg = graphs.get(graphName);
+        DirectedLabeledGraph.Node parent = new DirectedLabeledGraph.Node(parentName);
+        output.print("the children of " + parentName + " in " + graphName + " are:");
+        List<DirectedLabeledGraph.Edge> edges =  new ArrayList<>(dlg.getChildren(parent));
+        Collections.sort(edges, new Comparator<>() {
+            public int compare(DirectedLabeledGraph.Edge a, DirectedLabeledGraph.Edge b) {
+                int childComp = a.getChild().getData().compareTo(b.getChild().getData());
+                if(childComp == 0) {
+                    return a.getLabel().compareTo(b.getLabel());
+                } else {
+                    return childComp;
+                }
+            }
+        });
 
-        // ___ = graphs.get(graphName);
-        // output.println(...);
+        for(DirectedLabeledGraph.Edge e : edges) {
+            output.print(" " + e.getChild() + "(" + e.getLabel() + ")");
+        }
+        output.println();
     }
 
     /**

@@ -4,4 +4,4 @@
 CreateGraph graph1
 
 # Print the nodes in the graph
-ListNode graph1
+ListNodes graph1

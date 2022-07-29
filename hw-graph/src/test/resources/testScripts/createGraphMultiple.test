@@ -1,9 +1,9 @@
 # test that if it allows to create 3 empty graphs
 
 # Create a graph
-created graph graph1
-created graph graph2
-created graph graph3
+CreateGraph graph1
+CreateGraph graph2
+CreateGraph graph3
 
 # Print the nodes in the graph
 ListNodes graph1

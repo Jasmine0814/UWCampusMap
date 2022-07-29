@@ -9,4 +9,4 @@ AddNode graph1 n2
 AddNode graph1 n3
 
 # Print the nodes in the graph
-ListNode graph1
+ListNodes graph1

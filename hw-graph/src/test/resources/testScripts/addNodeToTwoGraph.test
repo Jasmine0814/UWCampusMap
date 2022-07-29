@@ -1,9 +1,9 @@
 # test that create two graphs and add 3 nodes in graph1, 2 nodes in graph2, 1 node in graph3.
 
 # Create a graph
-created graph graph1
-created graph graph2
-created graph graph3
+CreateGraph graph1
+CreateGraph graph2
+CreateGraph graph3
 
 # Add a pair of nodes
 AddNode graph1 n1

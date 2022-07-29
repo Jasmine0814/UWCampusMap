@@ -17,13 +17,27 @@ A few examples of possible Graph representations:
 representations listed above (for example, in terms of runtime complexity, space
 complexity, or ease of implementation).
 
-
+A:
+advantage - two collections of nodes and edges reduce space complexity which means it needs less space
+disadvantage - we just store these nodes and edges, and it is slow to implement listNode method which
+increase runtime complexity. we have to use iterator to get all nodes in DLG.
+B:
+advantage - it is really easy to list all the node in the graph because nodes are in the list.
+disadvantage - it is slow to list all the edges in the graph because it has to traverse all elements
+in the list and get children each node.
+C:
+advantage - it's pretty easy to check whether there is an edge between two node or how many edges
+between them. it reduces runtime complexity which is only O(1)(constant).
+disadvantage - it increases the space complexity because you need to store each edge between nodes.
 
 
 2. In two to three sentences, describe the representation you chose and explain why you
 chose it. If you chose to use a different representation than one of the three we described
 above, be sure to list its advantages and disadvantages, too.
 
+I chose B to be the representation. getChildren and listNode are two important methods in our class
+and option B satisfied this request. Although option C is faster, It takes up too much space which is
+unnecessary. and the runtime of option B is acceptable.
 
 
 
@@ -35,11 +49,16 @@ above, be sure to list its advantages and disadvantages, too.
 1. Describe any new tests you added and why you added them, or why you feel that your original
 tests alone are sufficient.
 
-
+I added testHashCode() and testEquals() two tests in testEdge and testNode class. in previous hw5,
+because I didn't know the implementation, so I didn't create these two test. But I implement methods
+in hw6 so I add two test. My original tests are still sufficient because I have many test for other method
+like testGetLabel and testgetChildren .etc
 
 
 2. Did you make any changes to your specifications as you were implementing your Graph? (yes/no)
 If yes, describe your changes and why you made them.
 
+I add checkRep function in my DLG, Node and Edge class to check whether the RI is hold everywhere.
+and I also add Equals and hashCode function in Node and Edge class because of the given spec.
 
 

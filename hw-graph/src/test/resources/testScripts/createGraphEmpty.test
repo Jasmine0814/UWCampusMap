@@ -1,7 +1,7 @@
 # test that a empty graph can be created
 
 # Create a graph
-created graph graph1
+CreateGraph graph1
 
 # Print the nodes in the graph
 ListNodes graph1

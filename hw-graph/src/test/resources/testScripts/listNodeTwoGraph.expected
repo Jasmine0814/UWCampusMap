@@ -1,7 +1,7 @@
 # test many nodes in two graphs can be listed correctly.
 
-CreateGraph A
-CreateGraph B
+created graph A
+created graph B
 added node n1 to A
 added node n2 to A
 added node n3 to A

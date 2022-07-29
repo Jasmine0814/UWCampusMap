@@ -1,7 +1,7 @@
 # test to create a graph and an edge can be added between two nodes in a graph
 
 # create a graph
-created graph graph1
+CreateGraph graph1
 
 # Add a pair of nodes
 AddNode graph1 n1

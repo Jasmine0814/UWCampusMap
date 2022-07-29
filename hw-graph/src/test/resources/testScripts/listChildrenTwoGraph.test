@@ -11,6 +11,6 @@ AddNode B n6
 AddEdge A n1 n2 e12
 AddEdge A n1 n3 e13
 AddEdge B n4 n5 e45
-AddEdge B n4 n6 e16
+AddEdge B n4 n6 e46
 ListChildren A n1
 ListChildren B n4

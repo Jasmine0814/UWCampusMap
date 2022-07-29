@@ -1,7 +1,7 @@
 # Tests that a graph can be created, a node and a self-pointing edge
 # can be added to the graph
 
-# create a graph
+# Create a Graph
 created graph graph1
 
 # Add a node

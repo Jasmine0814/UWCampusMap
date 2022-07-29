@@ -1,6 +1,6 @@
 package graph;
 
-import java.util.Set;
+import java.util.*;
 
 /**
  * This class represent a mutable Directed Labeled Graph(DLG) which is a
@@ -13,13 +13,25 @@ import java.util.Set;
 
 public class DirectedLabeledGraph {
 
+    private Map<Node, Set<Edge>> graph;
+    public static final boolean DEBUG = false;
+
+
+    // RI: list != null and each term in the map is not null.
+    // AF:
+    // AF(this) = A Directed Labeled Graph g, g.elements = this.graph
+    // All nodes in Graph = this.g.keySet()
+    // All Edges starting at Node n = this.g.getKey(n)
     /**
      * this is constructor that construct new empty DLG
      * @spec.modifies this
      * @spec.effects create a new empty DLG
      */
-    public void DirectedLabeledGraph() {
-        throw new RuntimeException("constructor is not yet implemented");
+    public DirectedLabeledGraph() {
+        this.graph = new HashMap<>();
+        if(DEBUG) {
+            checkRep();
+        }
     }
 
     /**
@@ -29,7 +41,22 @@ public class DirectedLabeledGraph {
      * @spec.effects add a edge to listNodes corresponding to parent and child node
      */
     public void addEdge(Edge e) {
-        throw new RuntimeException("addEdges method is not yet implemented");
+        if(DEBUG) {
+            checkRep();
+        }
+        if(!graph.keySet().contains(e.getChild()) ) {
+            addNode(e.getChild());
+        }
+        if(!graph.keySet().contains(e.getParent())) {
+            addNode(e.getParent());
+        }
+
+        Set<Edge> edgesSet = graph.get(e.getParent());
+        edgesSet.add(e);
+        graph.put(e.getParent(), edgesSet);
+        if(DEBUG) {
+            checkRep();
+        }
     }
 
     /**
@@ -39,7 +66,15 @@ public class DirectedLabeledGraph {
      * @spec.effects add a Node to this DirectedLabeledGraph(DLG)
      */
     public void addNode(Node n) {
-        throw new RuntimeException("addNode method is not yet implemented");
+        if(DEBUG) {
+            checkRep();
+        }
+        if(!graph.keySet().contains(n)) {
+            graph.put(n, new HashSet<>());
+        }
+        if(DEBUG) {
+            checkRep();
+        }
     }
 
     /**
@@ -47,7 +82,14 @@ public class DirectedLabeledGraph {
      * @return A set of all Nodes in this DLG
      */
     public Set<Node> listNodes() {
-        throw new RuntimeException("listNodes method is not yet implemented");
+        if(DEBUG) {
+            checkRep();
+        }
+        Set<Node> allNodes = Collections.unmodifiableSet(graph.keySet());
+        if(DEBUG) {
+            checkRep();
+        }
+        return allNodes;
     }
 
     /**
@@ -57,14 +99,52 @@ public class DirectedLabeledGraph {
      * @spec.requires parent cannot be null
      */
     public Set<Edge> getChildren(Node parent) {
-        throw new RuntimeException("getChildren method is not yet implemented");
+        if(DEBUG) {
+            checkRep();
+        }
+        Set<Edge> edges = Collections.unmodifiableSet(graph.get(parent));
+        if(DEBUG) {
+            checkRep();
+        }
+        return edges;
     }
+
+    private void checkRep() {
+        if(graph == null) {
+            throw new RuntimeException("The graph is null");
+        }
+        for(Node n : graph.keySet()) {
+            if(n == null) {
+                throw new RuntimeException("the node is null");
+            }
+            if(graph.get(n) == null) {
+                throw new RuntimeException("the set of edge is null");
+            }
+            for(Edge e : graph.get(n)) {
+                if(e == null) {
+                    throw new RuntimeException("the edge is null");
+                }
+            }
+        }
+    }
+
+
 
     /**
      * This class represent an immutable edge in DLG from parent node to child node
      * and labeled by a String
      */
     public static class Edge {
+
+        // RI: parent != null and child != null and label != null
+        // AF: AF(this) = A Edge e
+        //      this.parent == e.parent and
+        //      this.child == e.child and
+        //      this.label == e.label
+
+        private final Node parent;
+        private final Node child;
+        private final String label;
 
         /**
          * this is a constructor that construct an edge with parent, child and label
@@ -77,7 +157,10 @@ public class DirectedLabeledGraph {
          */
 
         public Edge(Node parent, Node child, String label) {
-            throw new RuntimeException("the constructor is not yet implemented");
+            this.parent = parent;
+            this.child = child;
+            this.label = label;
+            checkRep();
         }
 
         /**
@@ -85,7 +168,7 @@ public class DirectedLabeledGraph {
          * @return the parent node of this edge
          */
         public Node getParent() {
-            throw new RuntimeException("getParent method is not yet implemented");
+            return this.parent;
         }
 
         /**
@@ -93,7 +176,7 @@ public class DirectedLabeledGraph {
          * @return the child node of this edge
          */
         public Node getChild() {
-            throw new RuntimeException("getChild method is not yet implemented");
+            return this.child;
         }
 
         /**
@@ -101,7 +184,30 @@ public class DirectedLabeledGraph {
          * @return the label of this edge
          */
         public String getLabel() {
-            throw new RuntimeException("getLabel method is not yet implemented");
+            return this.label;
+        }
+
+        private void checkRep() {
+            if(this.parent == null) {
+                throw new RuntimeException("the parent of edge is null");
+            }
+            if(this.child == null) {
+                throw new RuntimeException("the child of edge is null");
+            }
+            if(this.label == null) {
+                throw new RuntimeException("the label of edge is null");
+            }
+        }
+        @Override
+        public boolean equals(Object obj) {
+            if (obj instanceof Edge) {
+                Edge n = (Edge) obj;
+                return (this.label.equals(n.label) &&
+                        this.parent.equals(n.parent) &&
+                        this.child.equals(n.child));
+            } else {
+                return false;
+            }
         }
     }
 
@@ -110,6 +216,10 @@ public class DirectedLabeledGraph {
      */
     public static class Node {
 
+        // RI: data of node is not null
+        // AF: AF(this) = a Node n
+        //      this.data = n.data
+        private final String data;
         /**
          * this is a constructor that construct a node with given data
          * @param data the data that store in the node
@@ -117,7 +227,8 @@ public class DirectedLabeledGraph {
          * @spec.effects create new node with given data
          */
         public Node(String data) {
-            throw new RuntimeException("this constructor is not yet implemented");
+            this.data = data;
+            checkRep();
         }
 
         /**
@@ -125,8 +236,30 @@ public class DirectedLabeledGraph {
          * @return the data of this node
          */
         public String getData() {
-            throw new RuntimeException("getData method is not yet implemented");
+            return data;
         }
 
+        private void checkRep() {
+            if(data == null) {
+                throw new RuntimeException("the data is null");
+            }
+        }
+        @Override
+        public boolean equals(Object obj) {
+            if(!(obj instanceof Node)) {
+                return false;
+            } else {
+                Node n = (Node) obj;
+                return(this.data.equals(n.data));
+            }
+        }
+
+        public int hashCode() {
+            return this.data.hashCode();
+        }
+        @Override
+        public String toString(){
+            return data.toString();
+        }
     }
 }

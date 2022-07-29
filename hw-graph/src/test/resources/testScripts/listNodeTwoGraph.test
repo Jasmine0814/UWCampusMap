@@ -8,6 +8,6 @@ AddNode A n3
 AddNode B n4
 AddNode B n5
 AddNode B n6
-ListNode A
-ListNode B
+ListNodes A
+ListNodes B
 
