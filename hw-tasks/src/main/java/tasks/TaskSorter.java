@@ -23,6 +23,8 @@ import java.util.*;
 public class TaskSorter {
 
     // TODO: Enter private Graph field here with description
+    //private DirectedLabeledGraph<Task,Dependency> graph;
+
     // nodes of Graphs should be Task objects,
     // and edges should be Dependency objects.
     // You don't have to write an abstraction function or
@@ -32,9 +34,7 @@ public class TaskSorter {
      * Creates a new TaskSorter object with no added tasks or dependencies.
      */
     public TaskSorter() {
-        // TODO: Implement creating an empty graph.
-
-        throw new RuntimeException("not yet implemented");
+        //this.graph = new DirectedLabeledGraph<>();
     }
 
     /**
@@ -45,10 +45,6 @@ public class TaskSorter {
      * @spec.requires t != null
      */
     public void addTask(Task t) {
-        // TODO: Implement adding a Task as a node.
-        //       Do nothing if the task exists already.
-
-        throw new RuntimeException("not yet implemented");
     }
 
     /**

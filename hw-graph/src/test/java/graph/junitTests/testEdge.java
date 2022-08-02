@@ -12,31 +12,31 @@ public class testEdge {
 
     @Rule public Timeout globalTimeout = Timeout.seconds(10); // 10 seconds max per method tested
 
-    private static DirectedLabeledGraph.Node Nempty = new DirectedLabeledGraph.Node("");
-    private static DirectedLabeledGraph.Node Na = new DirectedLabeledGraph.Node("a");
-    private static DirectedLabeledGraph.Node Na2 = new DirectedLabeledGraph.Node("a");
+    private static DirectedLabeledGraph.Node<String> Nempty = new DirectedLabeledGraph.Node<String>("");
+    private static DirectedLabeledGraph.Node<String> Na = new DirectedLabeledGraph.Node<String>("a");
+    private static DirectedLabeledGraph.Node<String> Na2 = new DirectedLabeledGraph.Node<String>("a");
 
-    private static DirectedLabeledGraph.Node NA = new DirectedLabeledGraph.Node("A");
-    private static DirectedLabeledGraph.Node Nb = new DirectedLabeledGraph.Node("b");
+    private static DirectedLabeledGraph.Node<String> NA = new DirectedLabeledGraph.Node<String>("A");
+    private static DirectedLabeledGraph.Node<String> Nb = new DirectedLabeledGraph.Node<String>("b");
 
-    private static DirectedLabeledGraph.Edge EaTob = new DirectedLabeledGraph.Edge(Na, Nb, "EaTob");
+    private static DirectedLabeledGraph.Edge<String,String> EaTob = new DirectedLabeledGraph.Edge<>(Na, Nb, "EaTob");
 
-    private static DirectedLabeledGraph.Edge EbToa = new DirectedLabeledGraph.Edge(Nb, Na, "EbToa");
-    private static DirectedLabeledGraph.Edge EbToa1 = new DirectedLabeledGraph.Edge(Nb, Na, "EbToa");
+    private static DirectedLabeledGraph.Edge<String,String> EbToa = new DirectedLabeledGraph.Edge<>(Nb, Na, "EbToa");
+    private static DirectedLabeledGraph.Edge<String,String> EbToa1 = new DirectedLabeledGraph.Edge<>(Nb, Na, "EbToa");
 
-    private static DirectedLabeledGraph.Edge EaToA = new DirectedLabeledGraph.Edge(Na, NA, "EaToA");
-    private static DirectedLabeledGraph.Edge EaTob1 = new DirectedLabeledGraph.Edge(Na, Nb, "EaTob1");
-    private static DirectedLabeledGraph.Edge EselfPointing = new DirectedLabeledGraph.Edge(Na, Na, "EselfPointing");
-    private static DirectedLabeledGraph.Edge EemptySelfPointing = new DirectedLabeledGraph.Edge(Nempty, Nempty, "EemptySelfPointing");
+    private static DirectedLabeledGraph.Edge<String,String> EaToA = new DirectedLabeledGraph.Edge<>(Na, NA, "EaToA");
+    private static DirectedLabeledGraph.Edge<String,String> EaTob1 = new DirectedLabeledGraph.Edge<>(Na, Nb, "EaTob1");
+    private static DirectedLabeledGraph.Edge<String,String> EselfPointing = new DirectedLabeledGraph.Edge<>(Na, Na, "EselfPointing");
+    private static DirectedLabeledGraph.Edge<String,String> EemptySelfPointing = new DirectedLabeledGraph.Edge<>(Nempty, Nempty, "EemptySelfPointing");
 
     @Test
     public void testCreateEdge() {
-        DirectedLabeledGraph.Edge EaTob = new DirectedLabeledGraph.Edge(Na, Nb, "aTob");
-        DirectedLabeledGraph.Edge EbToa = new DirectedLabeledGraph.Edge(Nb, Na, "bToa");
-        DirectedLabeledGraph.Edge EaToA = new DirectedLabeledGraph.Edge(Na, NA, "aToA");
-        DirectedLabeledGraph.Edge EaTob1 = new DirectedLabeledGraph.Edge(Na, Nb, "aTob1");
-        DirectedLabeledGraph.Edge EselfPointing = new DirectedLabeledGraph.Edge(Na, Na, "selfPointing");
-        DirectedLabeledGraph.Edge EemptySelfPointing = new DirectedLabeledGraph.Edge(Nempty, Nempty, "emptySelfPointing");
+        DirectedLabeledGraph.Edge<String,String> EaTob = new DirectedLabeledGraph.Edge<>(Na, Nb, "aTob");
+        DirectedLabeledGraph.Edge<String,String> EbToa = new DirectedLabeledGraph.Edge<>(Nb, Na, "bToa");
+        DirectedLabeledGraph.Edge<String,String> EaToA = new DirectedLabeledGraph.Edge<>(Na, NA, "aToA");
+        DirectedLabeledGraph.Edge<String,String> EaTob1 = new DirectedLabeledGraph.Edge<>(Na, Nb, "aTob1");
+        DirectedLabeledGraph.Edge<String,String> EselfPointing = new DirectedLabeledGraph.Edge<>(Na, Na, "selfPointing");
+        DirectedLabeledGraph.Edge<String,String> EemptySelfPointing = new DirectedLabeledGraph.Edge<>(Nempty, Nempty, "emptySelfPointing");
     }
 
     @Test

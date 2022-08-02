@@ -11,9 +11,9 @@ import java.util.*;
  * have unique labels.
  */
 
-public class DirectedLabeledGraph {
+public class DirectedLabeledGraph<T,E> {
 
-    private Map<Node, Set<Edge>> graph;
+    private Map<Node<T>, Set<Edge<T,E>>> graph;
     public static final boolean DEBUG = false;
 
 
@@ -40,7 +40,7 @@ public class DirectedLabeledGraph {
      * @spec.modifies this
      * @spec.effects add a edge to listNodes corresponding to parent and child node
      */
-    public void addEdge(Edge e) {
+    public void addEdge(Edge<T,E> e) {
         if(DEBUG) {
             checkRep();
         }
@@ -51,7 +51,7 @@ public class DirectedLabeledGraph {
             addNode(e.getParent());
         }
 
-        Set<Edge> edgesSet = graph.get(e.getParent());
+        Set<Edge<T,E>> edgesSet = graph.get(e.getParent());
         edgesSet.add(e);
         graph.put(e.getParent(), edgesSet);
         if(DEBUG) {
@@ -65,7 +65,7 @@ public class DirectedLabeledGraph {
      * @spec.modifies this
      * @spec.effects add a Node to this DirectedLabeledGraph(DLG)
      */
-    public void addNode(Node n) {
+    public void addNode(Node<T> n) {
         if(DEBUG) {
             checkRep();
         }
@@ -81,11 +81,11 @@ public class DirectedLabeledGraph {
      * return A set of node that all in this DLG
      * @return A set of all Nodes in this DLG
      */
-    public Set<Node> listNodes() {
+    public Set<Node<T>> listNodes() {
         if(DEBUG) {
             checkRep();
         }
-        Set<Node> allNodes = Collections.unmodifiableSet(graph.keySet());
+        Set<Node<T>> allNodes = Collections.unmodifiableSet(graph.keySet());
         if(DEBUG) {
             checkRep();
         }
@@ -98,11 +98,11 @@ public class DirectedLabeledGraph {
      * @return a set of all edges from the given parent node
      * @spec.requires parent cannot be null
      */
-    public Set<Edge> getChildren(Node parent) {
+    public Set<Edge<T,E>> getChildren(Node parent) {
         if(DEBUG) {
             checkRep();
         }
-        Set<Edge> edges = Collections.unmodifiableSet(graph.get(parent));
+        Set<Edge<T,E>> edges = Collections.unmodifiableSet(graph.get(parent));
         if(DEBUG) {
             checkRep();
         }
@@ -134,7 +134,7 @@ public class DirectedLabeledGraph {
      * This class represent an immutable edge in DLG from parent node to child node
      * and labeled by a String
      */
-    public static class Edge {
+    public static class Edge<T,E> {
 
         // RI: parent != null and child != null and label != null
         // AF: AF(this) = A Edge e
@@ -142,9 +142,9 @@ public class DirectedLabeledGraph {
         //      this.child == e.child and
         //      this.label == e.label
 
-        private final Node parent;
-        private final Node child;
-        private final String label;
+        private final Node<T> parent;
+        private final Node<T> child;
+        private final E label;
 
         /**
          * this is a constructor that construct an edge with parent, child and label
@@ -156,7 +156,7 @@ public class DirectedLabeledGraph {
          * @spec.requires parent, child, label cannot be null
          */
 
-        public Edge(Node parent, Node child, String label) {
+        public Edge(Node<T> parent, Node<T> child, E label) {
             this.parent = parent;
             this.child = child;
             this.label = label;
@@ -167,7 +167,7 @@ public class DirectedLabeledGraph {
          * return the node that is the parent of this edge
          * @return the parent node of this edge
          */
-        public Node getParent() {
+        public Node<T> getParent() {
             return this.parent;
         }
 
@@ -175,7 +175,7 @@ public class DirectedLabeledGraph {
          * return the node that is the child of this edge
          * @return the child node of this edge
          */
-        public Node getChild() {
+        public Node<T> getChild() {
             return this.child;
         }
 
@@ -183,7 +183,7 @@ public class DirectedLabeledGraph {
          * return the label of this edge
          * @return the label of this edge
          */
-        public String getLabel() {
+        public E getLabel() {
             return this.label;
         }
 
@@ -200,8 +200,8 @@ public class DirectedLabeledGraph {
         }
         @Override
         public boolean equals(Object obj) {
-            if (obj instanceof Edge) {
-                Edge n = (Edge) obj;
+            if (obj instanceof Edge<?,?>) {
+                Edge<?,?> n = (Edge<?,?>) obj;
                 return (this.label.equals(n.label) &&
                         this.parent.equals(n.parent) &&
                         this.child.equals(n.child));
@@ -214,19 +214,19 @@ public class DirectedLabeledGraph {
     /**
      * This class represents an immutable node of this DLG, containing string data
      */
-    public static class Node {
+    public static class Node<T> {
 
         // RI: data of node is not null
         // AF: AF(this) = a Node n
         //      this.data = n.data
-        private final String data;
+        private final T data;
         /**
          * this is a constructor that construct a node with given data
          * @param data the data that store in the node
          * @spec.modifies this.data
          * @spec.effects create new node with given data
          */
-        public Node(String data) {
+        public Node(T data) {
             this.data = data;
             checkRep();
         }
@@ -235,7 +235,7 @@ public class DirectedLabeledGraph {
          * return the data of this node
          * @return the data of this node
          */
-        public String getData() {
+        public T getData() {
             return data;
         }
 
@@ -246,10 +246,10 @@ public class DirectedLabeledGraph {
         }
         @Override
         public boolean equals(Object obj) {
-            if(!(obj instanceof Node)) {
+            if(!(obj instanceof Node<?>)) {
                 return false;
             } else {
-                Node n = (Node) obj;
+                Node<?> n = (Node<?>) obj;
                 return(this.data.equals(n.data));
             }
         }

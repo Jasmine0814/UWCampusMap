@@ -13,20 +13,20 @@ public class testNode {
 
     @Rule public Timeout globalTimeout = Timeout.seconds(10); // 10 seconds max per method tested
 
-    private static DirectedLabeledGraph.Node Nempty = new DirectedLabeledGraph.Node("");
-    private static DirectedLabeledGraph.Node Na = new DirectedLabeledGraph.Node("a");
-    private static DirectedLabeledGraph.Node Na1 = new DirectedLabeledGraph.Node("a");
-    private static DirectedLabeledGraph.Node NA = new DirectedLabeledGraph.Node("A");
-    private static DirectedLabeledGraph.Node Nb = new DirectedLabeledGraph.Node("b");
-    private static DirectedLabeledGraph.Node number = new DirectedLabeledGraph.Node("123");
+    private static DirectedLabeledGraph.Node<String> Nempty = new DirectedLabeledGraph.Node<String>("");
+    private static DirectedLabeledGraph.Node<String> Na = new DirectedLabeledGraph.Node<String>("a");
+    private static DirectedLabeledGraph.Node<String> Na1 = new DirectedLabeledGraph.Node<String>("a");
+    private static DirectedLabeledGraph.Node<String> NA = new DirectedLabeledGraph.Node<String>("A");
+    private static DirectedLabeledGraph.Node<String> Nb = new DirectedLabeledGraph.Node<String>("b");
+    private static DirectedLabeledGraph.Node<String> number = new DirectedLabeledGraph.Node<String>("123");
 
     @Test
     public void testCreateNode() {
-        new DirectedLabeledGraph.Node("");
-        new DirectedLabeledGraph.Node("a");
-        new DirectedLabeledGraph.Node("A");
-        new DirectedLabeledGraph.Node("b");
-        new DirectedLabeledGraph.Node("123");
+        new DirectedLabeledGraph.Node<>("");
+        new DirectedLabeledGraph.Node<>("a");
+        new DirectedLabeledGraph.Node<>("A");
+        new DirectedLabeledGraph.Node<>("b");
+        new DirectedLabeledGraph.Node<>("123");
     }
 
     @Test

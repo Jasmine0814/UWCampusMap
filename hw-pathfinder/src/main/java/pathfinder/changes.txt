@@ -1,2 +1,3 @@
 Briefly list any changes you made to your graph class during hw-pathfinder, and why you made those changes.
 
+I add generics to the graph class and change some specifications in it because the spec required us to do these.
