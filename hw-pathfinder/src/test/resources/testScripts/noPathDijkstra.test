@@ -1,0 +1,11 @@
+# no path will be find in this test
+
+CreateGraph Graph1
+
+AddNode Graph1 A
+AddNode Graph1 B
+AddNode Graph1 C
+
+AddEdge Graph1 A B 1.0
+
+FindPath Graph1 A C

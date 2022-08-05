@@ -1,0 +1,20 @@
+# test unknown start or dest
+
+created graph Graph1
+
+added node A to Graph1
+added node B to Graph1
+added node C to Graph1
+
+added edge 1.234 from A to B in Graph1
+
+path from A to B:
+A to B with weight 1.234
+total cost: 1.234
+
+unknown: D
+
+unknown: D
+
+unknown: D
+unknown: D

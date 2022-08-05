@@ -8,7 +8,7 @@ import static org.junit.Assert.assertNotEquals;
 import org.junit.Rule;
 import org.junit.rules.Timeout;
 
-public class testEdge {
+public class TestEdge {
 
     @Rule public Timeout globalTimeout = Timeout.seconds(10); // 10 seconds max per method tested
 

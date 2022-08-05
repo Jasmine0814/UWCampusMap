@@ -1,0 +1,16 @@
+# Find a path with Dijkstra's algorithm in simple graph
+
+CreateGraph Graph1
+
+AddNode Graph1 A
+AddNode Graph1 B
+
+AddEdge Graph1 A B 1.1
+AddEdge Graph1 B A 2.2
+
+FindPath Graph1 A B
+
+
+
+
+

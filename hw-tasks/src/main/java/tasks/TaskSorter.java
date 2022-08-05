@@ -22,8 +22,7 @@ import java.util.*;
  */
 public class TaskSorter {
 
-    // TODO: Enter private Graph field here with description
-    //private DirectedLabeledGraph<Task,Dependency> graph;
+    private Map<Task, Set<Dependency>> graphs;
 
     // nodes of Graphs should be Task objects,
     // and edges should be Dependency objects.
@@ -34,7 +33,7 @@ public class TaskSorter {
      * Creates a new TaskSorter object with no added tasks or dependencies.
      */
     public TaskSorter() {
-        //this.graph = new DirectedLabeledGraph<>();
+        this.graphs = new HashMap<>();
     }
 
     /**
@@ -45,6 +44,9 @@ public class TaskSorter {
      * @spec.requires t != null
      */
     public void addTask(Task t) {
+        if(!graphs.keySet().contains(t)) {
+            graphs.put(t, new HashSet<>());
+        }
     }
 
     /**
@@ -52,9 +54,8 @@ public class TaskSorter {
      * @return A set of all tasks in this TaskSorter.
      */
     public Set<Task> getTasks() {
-        // TODO: Implement getting all the tasks (nodes) in the graph.
-
-        throw new RuntimeException("not yet implemented");
+        Set<Task> allTasks = Collections.unmodifiableSet(graphs.keySet());
+        return allTasks;
     }
 
     /**
@@ -69,12 +70,18 @@ public class TaskSorter {
         Task before = dep.getBeforeTask();
         Task after = dep.getAfterTask();
 
-        // TODO: Implement adding a Dependency as an edge.
-        //       Do nothing if the same dependency exists already.
+        if(!graphs.keySet().contains(before)) {
+            addTask(before);
+        }
+        if(!graphs.keySet().contains(after)) {
+            addTask(after);
+        }
+        Set<Dependency> newDepSet = graphs.get(before);
+        newDepSet.add(dep);
+        graphs.put(before, newDepSet);
         // NOTE: The edge should go from "before" to "after"!
         //       The tests will not pass if the edges are the other way.
 
-        throw new RuntimeException("not yet implemented");
     }
 
     /**
@@ -86,11 +93,8 @@ public class TaskSorter {
      * @return set of dependencies with {@code t} as the "before" task
      */
     public Set<Dependency> getOutgoingDependencies(Task t) {
-        // TODO: Implement getting the dependencies that point to the tasks
-        //       depending on the given Task (in other words, get the edges
-        //       to a node's children in the graph)
-
-        throw new RuntimeException("not yet implemented");
+        Set<Dependency> allDep = Collections.unmodifiableSet(graphs.get(t));
+        return allDep;
     }
 
     /**

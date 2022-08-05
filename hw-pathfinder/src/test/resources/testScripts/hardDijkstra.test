@@ -1,0 +1,23 @@
+# find the shortest path with Dijkstra's algorithm
+
+CreateGraph Graph1
+
+AddNode Graph1 A
+AddNode Graph1 B
+AddNode Graph1 C
+AddNode Graph1 D
+AddNode Graph1 E
+
+AddEdge Graph1 A B 2.5
+AddEdge Graph1 B C 7.774477
+AddEdge Graph1 C D 1.5
+AddEdge Graph1 D E 1.5
+AddEdge Graph1 E A 6.0
+AddEdge Graph1 D C 2.0
+AddEdge Graph1 E D 2.0
+AddEdge Graph1 D A 9.0
+AddEdge Graph1 B D 1.21111
+
+FindPath Graph1 A E
+FindPath Graph1 E C
+

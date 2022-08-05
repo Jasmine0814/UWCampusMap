@@ -1,0 +1,17 @@
+# test unknown start or dest
+
+CreateGraph Graph1
+
+AddNode Graph1 A
+AddNode Graph1 B
+AddNode Graph1 C
+
+AddEdge Graph1 A B 1.2344
+
+FindPath Graph1 A B
+
+FindPath Graph1 B D
+
+FindPath Graph1 D B
+
+FindPath Graph1 D D

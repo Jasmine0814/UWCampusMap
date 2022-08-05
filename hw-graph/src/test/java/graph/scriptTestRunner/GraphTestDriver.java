@@ -195,7 +195,7 @@ public class GraphTestDriver {
         DirectedLabeledGraph<String,String> dlg = graphs.get(graphName);
         DirectedLabeledGraph.Node<String> parent = new DirectedLabeledGraph.Node<>(parentName);
         output.print("the children of " + parentName + " in " + graphName + " are:");
-        List<DirectedLabeledGraph.Edge<String,String>> edges =  new ArrayList<>(dlg.getChildren(parent));
+        List<DirectedLabeledGraph.Edge<String,String>> edges =  new ArrayList<>(dlg.getOutgoingEdges(parent));
         Collections.sort(edges, new Comparator<>() {
             public int compare(DirectedLabeledGraph.Edge<String,String> a, DirectedLabeledGraph.Edge<String,String> b) {
                 int childComp = a.getChild().getData().compareTo(b.getChild().getData());

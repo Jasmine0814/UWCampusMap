@@ -79,7 +79,7 @@ public class Path<E> implements Iterable<Path<E>.Segment> {
     public Path<E> extend(E newEnd, double segmentCost) {
         checkRep();
         //
-        Path<E> extendedPath = new Path<E>(start);
+        Path<E> extendedPath = new Path<>(start);
         extendedPath.path.addAll(this.path);
         extendedPath.path.add(new Segment(this.getEnd(), newEnd, segmentCost));
         extendedPath.cost = this.cost + segmentCost;
@@ -173,7 +173,7 @@ public class Path<E> implements Iterable<Path<E>.Segment> {
         if(this == obj) {
             return true;
         }
-        if(!(obj instanceof Path)) {
+        if(!(obj instanceof Path<?>)) {
             return false;
         }
         Path<?> other = (Path<?>) obj;
@@ -303,10 +303,10 @@ public class Path<E> implements Iterable<Path<E>.Segment> {
             if(this == obj) {
                 return true;
             }
-            if(!(obj instanceof Path.Segment)) {
+            if(!(obj instanceof Path<?>.Segment)) {
                 return false;
             }
-            Path<E>.Segment other = (Segment) obj;
+            Path<?>.Segment other = (Path<?>.Segment) obj;
             return other.getStart().equals(this.getStart())
                    && other.getEnd().equals(this.getEnd())
                    && (Double.compare(this.cost, other.cost) == 0);

@@ -24,6 +24,7 @@ public class DirectedLabeledGraph<T,E> {
     // All Edges starting at Node n = this.g.getKey(n)
     /**
      * this is constructor that construct new empty DLG
+     * @spec.requires the edge being added must be unique
      * @spec.modifies this
      * @spec.effects create a new empty DLG
      */
@@ -38,7 +39,7 @@ public class DirectedLabeledGraph<T,E> {
      * add the given Edge to this graph
      * @param e a unique edge that different from other
      * @spec.modifies this
-     * @spec.effects add a edge to listNodes corresponding to parent and child node
+     * @spec.effects add an edge to graph corresponding to parent and child node
      */
     public void addEdge(Edge<T,E> e) {
         if(DEBUG) {
@@ -98,7 +99,7 @@ public class DirectedLabeledGraph<T,E> {
      * @return a set of all edges from the given parent node
      * @spec.requires parent cannot be null
      */
-    public Set<Edge<T,E>> getChildren(Node parent) {
+    public Set<Edge<T,E>> getOutgoingEdges(Node parent) {
         if(DEBUG) {
             checkRep();
         }
@@ -128,6 +129,12 @@ public class DirectedLabeledGraph<T,E> {
         }
     }
 
+    public boolean containsNode(Node<T> n) {
+        checkRep();
+        boolean result = this.graph.keySet().contains(n);
+        checkRep();
+        return result;
+    }
 
 
     /**
@@ -151,7 +158,6 @@ public class DirectedLabeledGraph<T,E> {
          * @param parent represent the start point of the edge
          * @param child represent the end point of the edge
          * @param label the weight of the edge
-         * @spec.modifies parent, child, label
          * @spec.effects create a new Edge with given parent, child and label.
          * @spec.requires parent, child, label cannot be null
          */
@@ -162,6 +168,8 @@ public class DirectedLabeledGraph<T,E> {
             this.label = label;
             checkRep();
         }
+
+
 
         /**
          * return the node that is the parent of this edge

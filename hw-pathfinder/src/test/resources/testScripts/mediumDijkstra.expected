@@ -1,0 +1,21 @@
+# find the shortest path with Dijkstra's algorithm
+
+created graph Graph1
+
+added node A to Graph1
+added node B to Graph1
+added node C to Graph1
+added node D to Graph1
+added node E to Graph1
+
+added edge 10.000 from B to C in Graph1
+added edge 1000.010 from C to A in Graph1
+added edge 750.000 from D to E in Graph1
+added edge 10.000 from E to A in Graph1
+added edge 20.000 from B to D in Graph1
+
+path from B to A:
+B to D with weight 20.000
+D to E with weight 750.000
+E to A with weight 10.000
+total cost: 780.000
