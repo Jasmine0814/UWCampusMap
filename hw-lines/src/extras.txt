@@ -6,5 +6,7 @@ Name:  <replace this with your name>
 Describe any additional functionality you added to your application, or any
 significant changes you made to the starter code beyond the basic requirements
 of the assignment, below:
-
+I create Points.ts, PointList.tsx and MapPoint.tsx these three files which are similar
+to Edge. They can drop a pin in the graph by given coordinate. and display the coordinate
+by Marker and Popup
 

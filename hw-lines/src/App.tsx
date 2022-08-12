@@ -15,35 +15,49 @@ import Map from "./Map";
 
 // Allows us to write CSS styles inside App.css, any styles will apply to all components inside <App />
 import "./App.css";
+import { Points } from "./Points";
+import { Edges } from "./Edges";
+import PointList from "./PointList";
 
-interface AppState {}
+interface AppState {
+    lines: Edges[];
+    points: Points[];
+}
 
 class App extends Component<{}, AppState> { // <- {} means no props.
 
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      // TODO: store edges in this state
-    };
-  }
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            lines: [],
+            points: []
+        };
+    }
 
-  render() {
-    return (
-      <div>
-        <h1 id="app-title">Line Mapper!</h1>
-        <div>
-          {/* TODO: define props in the Map component and pass them in here */}
-          <Map />
-        </div>
-        <EdgeList
-          onChange={(value) => {
-            // TODO: Modify this onChange callback to store the edges in the state
-            console.log("EdgeList onChange", value);
-          }}
-        />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <h1 id="app-title">Line Mapper!</h1>
+                <div>
+                    <Map drawEdges = {this.state.lines} drawPoints = {this.state.points}/>
+                </div>
+                <EdgeList
+                    onChange={(value) => {
+                        this.setState({
+                            lines: value,
+                        });
+                    }}
+                />
+                <PointList
+                    onChange={(value) =>{
+                        this.setState({
+                            points:value,
+                        })
+                    }}
+                />
+            </div>
+        );
+    }
 }
 
 export default App;
