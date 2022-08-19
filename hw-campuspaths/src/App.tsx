@@ -13,12 +13,57 @@ import React, {Component} from 'react';
 
 // Allows us to write CSS styles inside App.css, any styles will apply to all components inside <App />
 import "./App.css";
+import Map from "./Map";
+import { Edge } from './Edge';
+import { Point } from './Point';
+import BldList from './BldList';
 
-class App extends Component<{}, {}> {
+interface AppState {
+    lines: Edge[];
+    points: Point[];
+}
+class App extends Component<{}, AppState> {
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            lines: [],
+            points: []
+        };
+    }
+
+    handleEdgeChange(value: Edge[]) {
+        this.setState({lines: value});
+    }
+
+    handlePointChange(value: Point[]) {
+        this.setState({points: value});
+    }
+
+    clear() {
+        this.setState({
+            lines:[],
+            points:[],
+        });
+    }
 
     render() {
         return (
-            <p>Here's the beginning of your AMAZING CampusPaths GUI!</p>
+            <div id="uw-mapper">
+                <h1 id="app-title">UW Mapper! Find the shortest Path!</h1>
+                <div>
+                    <Map
+                        drawEdges = {this.state.lines}
+                        drawPoints = {this.state.points}
+                    />
+                </div>
+                <BldList
+                    onChange={(edges,points) => {
+                        this.handleEdgeChange(edges);
+                        this.handlePointChange(points);
+                    }}
+                />
+            </div>
         );
     }
 

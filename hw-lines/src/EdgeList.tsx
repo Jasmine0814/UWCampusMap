@@ -52,7 +52,7 @@ class EdgeList extends Component<EdgeListProps,EdgeListState> {
             let eachEdge : string[] = lines[i].split(" ");
             if (isNaN(parseInt(eachEdge[0])) || isNaN(parseInt(eachEdge[1])) ||
                 isNaN(parseInt(eachEdge[2])) || isNaN(parseInt(eachEdge[3]))) {
-                alert("Wrong coordinates type! Coordinates must be integers");
+                alert("Wrong coordinates type!");
                 return;
             }
             let edgex1 : number = parseInt(eachEdge[0]);

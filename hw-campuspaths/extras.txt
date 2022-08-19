@@ -6,4 +6,11 @@ List any additional features or functionality you implemented
 in your CampusPaths application below. Only things listed here
 will be considered for extra credit.
 
+I draw the path by alternating color(purple and gold) which are two representative colors
+in UW. And also I drop two pins in the start building and end building to make sure user
+can see where they are. And if users want to know the coordinate, they can click the pins
+and it will pop up(learned from resource citied in hw8). I also sort the building name from
+Z to A which I learned in the link below.
 
+
+source : https://owlcation.com/stem/creating-a-sortable-list-in-react-js
